@@ -1,0 +1,25 @@
+Como podemos ver no material anterior o Resource me devolvia a conversão de array em objeto de apenas um dado.
+Agora podemos retornar de vários dados, como o nome no diz uma collection
+
+Podemos usar:
+$ php artisan make:resource ProductCollection
+ou
+$php artisan make:resource Product --collection
+
+Assim podemos usar
+
+=== ProductCollection
+   public function toArray($request)
+    {
+        return [
+            'data' => $this->collection
+        ];
+    }
+
+=== ProductController
+    public function index()
+    {
+        $products = $this->productModel->paginate(1);
+
+        return new ProductCollection($products);
+    }

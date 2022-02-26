@@ -1,0 +1,9 @@
+Vamos gerar um UserController
+
+$ php artisan make:controller UserController --resource --api
+
+ ====> --resource: Faz a criação dos métodos CRUD
+ ====> --api: Ignora os dois métodos que seriam para renderizar as página de criação e edição no CRUD
+
+$ php artisan route:list
+ ====> Mostra todas as rotas

@@ -1,0 +1,32 @@
+É mais um camada para axiliar nas respostas da API
+Um meio de devolver um JSON.
+
+$ php artisan make:resource ProductResource
+
+Vai ser criando uma pasta Resource em App\Http\Resource
+
+
+=== ProductResource
+    public function toArray($request)
+    {
+        return [
+            'name' => $this->name,
+            'price' => $this->price
+        ];
+
+	//	Mostrar todos o dados de Product
+	//	$this->resource->toArray();
+    }
+
+
+=== ProductController
+    public function show($id)
+    {
+        $product = $this->productModel->find($id);
+
+        return new ProductResource($product);
+        // return response()->json($product);
+    }
+
+
+Assim na API vamos retornar apenas "Nome" e "Preço";
